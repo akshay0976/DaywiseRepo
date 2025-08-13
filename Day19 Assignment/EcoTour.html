@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTour – Explore Nature</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #2d572c;
+            color: white;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            display: inline-block;
+            font-size: 1.8rem;
+        }
+
+        nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-size: 2.5rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 20px;
+        }
+
+        #about {
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* Gallery */
+        #gallery {
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Contact Form */
+        #contact {
+            background: #f5f5f5;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .radio-group {
+            margin-top: 5px;
+        }
+
+        .radio-group input {
+            margin-right: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            background: #2d572c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #1d3a1b;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d572c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav {
+                float: none;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌿 EcoTour</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        Explore Nature, Embrace Adventure
+    </div>
+
+    <section id="about">
+        <h2>About EcoTour</h2>
+        <p>EcoTour is your gateway to sustainable travel experiences. We connect nature enthusiasts with eco-friendly
+            destinations around the world. Our mission is to promote environmental awareness while helping you explore
+            breathtaking landscapes responsibly.</p>
+    </section>
+
+    <section id="gallery">
+        <h2>Nature Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Forest">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Mountains">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c" alt="River">
+            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6" alt="Hills">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Lake">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Type of Inquiry *</label>
+            <div class="radio-group">
+                <input type="radio" name="inquiry" value="Booking" required> Booking
+                <input type="radio" name="inquiry" value="Partnership"> Partnership
+                <input type="radio" name="inquiry" value="Other"> Other
+            </div>
+
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EcoTour. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Travel Bliss</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .grid-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .grid-item h3 {
+            text-align: center;
+            padding: 10px;
+            background: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Travel Bliss</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="destinations.html" class="active">Destinations</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2 style="text-align:center; margin-top:20px;">Explore Our Destinations</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Maldives">
+                <h3>Maldives</h3>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1511732351157-1865efcb7b7b" alt="Paris">
+                <h3>Paris</h3>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="New York">
+                <h3>New York</h3>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef" alt="Tokyo">
+                <h3>Tokyo</h3>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" alt="Dubai">
+                <h3>Dubai</h3>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="Sydney">
+                <h3>Sydney</h3>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Travel Bliss. All Rights Reserved.
+    </footer>
+</body>
+
+</html>

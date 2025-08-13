@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Bliss - Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Travel Bliss</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Book Your Trip</h2>
+        <form action="success.html" method="GET">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Travel Package:</label>
+            <input type="radio" name="package" value="Luxury" required> Luxury
+            <input type="radio" name="package" value="Budget"> Budget
+            <input type="radio" name="package" value="Adventure"> Adventure
+
+            <label>Extras:</label>
+            <input type="checkbox" name="extras" value="Meals"> Meals Included
+            <input type="checkbox" name="extras" value="Guide"> Tour Guide
+            <input type="checkbox" name="extras" value="Insurance"> Travel Insurance
+
+            <label for="date">Travel Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Submit Booking</button>
+        </form>
+    </main>
+
+    <footer>
+        &copy; 2025 Travel Bliss. All Rights Reserved.
+    </footer>
+</body>
+
+</html>
