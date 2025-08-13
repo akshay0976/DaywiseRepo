@@ -1,0 +1,97 @@
+/* External CSS for site-wide styling */
+
+/* Typography tweaks */
+.lead {
+    line-height: 1.7;
+}
+
+/* Custom background and widths */
+body {
+    background-color: #fff;
+}
+
+/* Box Model Demonstration */
+.box-demo {
+    background-color: #f8f9fa;
+    /* light gray */
+    border: 4px solid #0d6efd;
+    /* Bootstrap primary color */
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 0.75rem;
+}
+
+/* CSS-only Navbar Toggle (no JavaScript) */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    cursor: pointer;
+    padding: 6px 8px;
+    border: 1px solid #dee2e6;
+    border-radius: .5rem;
+}
+
+.nav-toggle-label .burger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #212529;
+    margin: 5px 0;
+}
+
+/* Collapsible area default (mobile) */
+.collapse-nojs {
+    display: none;
+    width: 100%;
+}
+
+/* When toggle is checked, show the menu (mobile) */
+.nav-toggle:checked~.collapse-nojs {
+    display: block;
+    margin-top: 12px;
+}
+
+/* Desktop: always show menu, align items horizontally */
+@media (min-width: 768px) {
+    .collapse-nojs {
+        display: block !important;
+        width: auto;
+    }
+
+    .nav-toggle-label {
+        display: none;
+    }
+
+    .navbar-nav .nav-link {
+        padding-left: .75rem;
+        padding-right: .75rem;
+    }
+}
+
+/* Active link styling */
+.nav-link.active {
+    font-weight: 700;
+}
+
+/* Utility: make media elements nicely rounded */
+video,
+audio {
+    outline: none;
+}
+
+video {
+    border-radius: .5rem;
+}
+
+/* Table tweaks */
+.table {
+    --bs-table-bg: #212529;
+    /* dark */
+    --bs-table-color: #fff;
+}
+
+.table.table-dark> :not(caption)>*>* {
+    background-color: transparent;
+}

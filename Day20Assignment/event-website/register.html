@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Event | Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="border-bottom">
+        <nav class="container navbar navbar-expand-md py-3">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">LocalEvent</a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle d-md-none" aria-label="Toggle navigation" />
+            <label for="nav-toggle" class="nav-toggle-label d-md-none">
+                <span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span>
+            </label>
+            <div class="collapse-nojs d-md-flex ms-md-auto">
+                <ul class="navbar-nav ms-md-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="register.html">Register</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-5">
+        <div class="container">
+            <h1 class="fw-bold mb-3">Register for Community Carnival 2025</h1>
+            <p class="lead mb-4">Free entry! Please fill in your details below. Fields marked with * are required.</p>
+
+            <form class="row g-3 needs-nojs" action="register.html#done" method="get">
+                <!-- Personal Info -->
+                <div class="col-md-6">
+                    <label for="fullName" class="form-label fw-bold">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Akshay Kumar"
+                        required />
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label fw-bold">Email *</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com"
+                        required />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="phone" class="form-label fw-bold">Phone *</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 9XXXXXXXXX"
+                        required />
+                </div>
+                <div class="col-md-6">
+                    <label for="city" class="form-label fw-bold">City *</label>
+                    <input type="text" id="city" name="city" class="form-control" required />
+                </div>
+
+                <!-- Attendance details -->
+                <div class="col-md-6">
+                    <label class="form-label fw-bold d-block">Attendance Type *</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="attendType" id="attendSolo" value="Solo"
+                            required />
+                        <label class="form-check-label" for="attendSolo">Solo</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="attendType" id="attendFamily"
+                            value="Family" />
+                        <label class="form-check-label" for="attendFamily">Family</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="slot" class="form-label fw-bold">Preferred Time Slot *</label>
+                    <select id="slot" name="slot" class="form-select" required>
+                        <option value="" selected disabled>Select a slot</option>
+                        <option>Morning (9 AM – 12 PM)</option>
+                        <option>Afternoon (12 PM – 3 PM)</option>
+                        <option>Evening (3 PM – 6 PM)</option>
+                    </select>
+                </div>
+
+                <!-- Interests -->
+                <div class="col-12">
+                    <label for="interests" class="form-label fw-bold">Interests / Notes</label>
+                    <textarea id="interests" name="interests" rows="4" class="form-control"
+                        placeholder="Tell us what you are most excited about..."></textarea>
+                </div>
+
+                <!-- Consent -->
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="agree" id="agree" required />
+                        <label class="form-check-label" for="agree">
+                            I agree to receive updates about the event. *
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="col-12 d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Submit Registration</button>
+                    <a href="index.html" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+
+            <!-- Simple “success” anchor target (no JS) -->
+            <div id="done" class="alert alert-success mt-5 mb-0" role="alert" tabindex="-1">
+                <h2 class="h5 fw-bold mb-1">Registration Submitted!</h2>
+                <p class="mb-0">Thank you for registering. Check your inbox for a confirmation email.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 border-top">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <p class="mb-2 mb-md-0">&copy; 2025 LocalEvent Community Group</p>
+            <nav class="d-flex gap-3">
+                <a class="text-decoration-none" href="index.html">Home</a>
+                <a class="text-decoration-none" href="about.html">About</a>
+                <a class="text-decoration-none" href="register.html">Register</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>
