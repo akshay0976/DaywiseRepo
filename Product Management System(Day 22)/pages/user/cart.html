@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cart — PMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">PMS</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Products</a></li>
+                </ul>
+                <div class="d-flex">
+                    <button id="logoutBtn" class="btn btn-outline-light">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <h3>Your Cart</h3>
+        <div id="cartArea" class="card p-3">
+            <div id="cartContents"></div>
+            <div class="mt-3 d-flex justify-content-between">
+                <h5>Total: $<span id="totalAmount">0.00</span></h5>
+                <div>
+                    <a id="checkoutBtn" class="btn btn-success" href="checkout.html">Place Order</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function checkUser() { const user = JSON.parse(localStorage.getItem('loggedInUser') || 'null'); if (!user || user.role !== 'user') { alert('Please login as user'); window.location.href = '../login.html'; } })();
+        document.getElementById('logoutBtn').addEventListener('click', () => { localStorage.removeItem('loggedInUser'); window.location.href = '../login.html'; });
+
+        function renderCart() {
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const userCart = (cart.find(c => c.userId === user.id) || { products: [] });
+            const contents = document.getElementById('cartContents');
+            const totalEl = document.getElementById('totalAmount');
+            contents.innerHTML = '';
+
+            if (userCart.products.length === 0) {
+                contents.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+                document.getElementById('checkoutBtn').classList.add('disabled');
+                totalEl.innerText = '0.00';
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.className = 'table';
+            table.innerHTML = `<thead><tr><th>Name</th><th>Price</th><th>Action</th></tr></thead>`;
+            const tbody = document.createElement('tbody');
+            let total = 0;
+            userCart.products.forEach((p, idx) => {
+                total += p.price;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${p.name}</td><td>$${p.price.toFixed(2)}</td>
+                        <td><button class="btn btn-sm btn-danger" onclick="removeFromCart(${idx})">Remove</button></td>`;
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            contents.appendChild(table);
+            totalEl.innerText = total.toFixed(2);
+            document.getElementById('checkoutBtn').classList.remove('disabled');
+        }
+
+        function removeFromCart(index) {
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            let userCart = cart.find(c => c.userId === user.id);
+            if (!userCart) return;
+            userCart.products.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // On checkout click we'll simulate placing an order by clearing user's cart
+        document.getElementById('checkoutBtn').addEventListener('click', function (e) {
+            // allow navigation to checkout page but store a flag to show order placed
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            let userCart = cart.find(c => c.userId === user.id);
+            if (!userCart || userCart.products.length === 0) { alert('Cart empty'); e.preventDefault(); return; }
+            // keep order details in localStorage for checkout page to read
+            localStorage.setItem('lastOrder', JSON.stringify({ userId: user.id, products: userCart.products, total: userCart.products.reduce((s, p) => s + p.price, 0) }));
+            // clear user's cart
+            cart = cart.filter(c => c.userId !== user.id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // allow navigation
+        });
+
+        renderCart();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

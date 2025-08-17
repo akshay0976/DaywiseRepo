@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Signup — PMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card mx-auto col-md-6 p-4 shadow-sm">
+            <h3 class="text-center mb-3">Create account</h3>
+            <form id="signupForm" novalidate>
+                <div class="mb-3">
+                    <label class="form-label">Full name</label>
+                    <input id="name" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input id="email" type="email" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input id="password" type="password" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select id="role" class="form-select" required>
+                        <option value="user" selected>User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Signup</button>
+            </form>
+            <p class="mt-3 text-center">Already registered? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Inline JS needed for signup -->
+    <script>
+        // Initialize default admin (if none exists) — helpful for demo
+        (function ensureDefaultAdmin() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (!users.some(u => u.role === 'admin')) {
+                users.push({
+                    id: Date.now() + 1,
+                    name: 'Admin',
+                    email: 'admin@pms.com',
+                    password: 'admin123',
+                    role: 'admin'
+                });
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+        })();
+
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            if (!name || !email || !password) { alert('Fill all fields'); return; }
+
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (users.find(u => u.email === email)) { alert('Email already registered'); return; }
+
+            const newUser = { id: Date.now(), name, email, password, role };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Signup successful! Please login.');
+            window.location.href = 'login.html';
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
